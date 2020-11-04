@@ -6,8 +6,14 @@ class GamesController < ApplicationController
 
   end
 
-  def edit
-
+  def update
+    @game = Game.find(params[:id])
+    if @game.valid?
+      @game.update(params)
+      redirect_to game_url
+    else 
+      render :json => {:error => "game not updated", :messages => @game.errors}
+    end
   end
 
   def show
