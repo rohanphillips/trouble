@@ -18,7 +18,7 @@ ActiveRecord::Schema.define(version: 2020_11_04_200340) do
   create_table "games", force: :cascade do |t|
     t.datetime "date_started"
     t.datetime "date_finished"
-    t.boolean "complete"
+    t.boolean "complete", default: false
     t.datetime "created_at"
     t.datetime "updated_at"
   end

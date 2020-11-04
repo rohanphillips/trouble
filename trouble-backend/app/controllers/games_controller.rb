@@ -6,6 +6,10 @@ class GamesController < ApplicationController
 
   end
 
+  def edit
+
+  end
+
   def show
     game = Game.find(params[:id])
     render json: GameSerializer.new(game)

@@ -1,4 +1,4 @@
 class PieceSerializer
   include FastJsonapi::ObjectSerializer
-  attributes 
+  attributes :id, :board_location
 end
