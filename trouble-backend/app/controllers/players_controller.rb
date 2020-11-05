@@ -20,7 +20,8 @@ class PlayersController < ApplicationController
   end
 
   def destroy
-
+    Player.find_by_id(params[:id]).delete
+    render :json => {:message => "success"}
   end
 
   private
