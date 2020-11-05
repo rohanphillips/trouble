@@ -3,7 +3,8 @@ class GamesController < ApplicationController
   end
 
   def create
-
+    @game = Game.create();
+    redirect_to game_url(@game)
   end
 
   def update
