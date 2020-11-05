@@ -21,7 +21,6 @@ function addPlayer(){
   newPlayer.game_id = currentGame.id;
   newPlayer.player_name = document.getElementById("player_name_input").value
   newPlayer.player_color = document.getElementById("player_color_input").value;
-  // console.log(createNewPlayerObject(newPlayer))
   newPlayerRequest(createNewPlayerObject(newPlayer));
 }
 
@@ -44,15 +43,14 @@ function newPlayerRequest(configObj){
             return response.json();
           })
           .then(function(object) {
-            // console.log("this is what was returned for newPokemonRequest")
-            // console.log(object)
-            // console.log(object.data.attributes);
-            console.log("new player added");
             console.log(object);
+            if (object.errors){
+              console.log("errors occurred")
+            } else {
+              console.log("new player successful")
+            }
           })
           .catch(function(error) {
-            // console.log("error");
-            // console.log(error.message);
           });
 }
 function createNewPlayerObject(newPlayer){
