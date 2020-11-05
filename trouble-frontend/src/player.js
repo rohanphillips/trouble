@@ -41,10 +41,10 @@ function createNewPlayerObject(newPlayer){
   };
   return myGetObject;
 };
-let d = undefined;
+
+
 function displayNewPlayer(object){
   console.log(object);
-  d = object;
   let playerList = document.getElementById("current_player_list");
   let newPlayer = document.createElement("div")
   newPlayer.id = `p${object.data.id}`
@@ -56,7 +56,7 @@ function displayNewPlayer(object){
   deleteButton.innerText = "Delete"
   deleteButton.id = `${object.data.id}`
   deleteButton.addEventListener("click", () => {
-    deletePlayer(deleteButton.id);
+    initiateDeletePlayer(deleteButton.id, newPlayer);
   })
   holder.appendChild(deleteButton);
   newPlayer.appendChild(holder);
@@ -64,9 +64,33 @@ function displayNewPlayer(object){
 
 }
 
-function deletePlayer(id){
+function initiateDeletePlayer(id, element){
   console.log("will delete player " + id)
+  deletePlayerRequest(id, element, createDeletePlayerObject())
 }
+
+function deletePlayerRequest(id, element, configObj){
+  return fetch(PLAYERS_URL + '/' + id, configObj)
+          .then(function(response) {
+            return response.json();
+          })
+          .then(function(object) {
+            console.log("delete successful")
+          })
+          .catch(function(error) {
+          });
+}
+
+function createDeletePlayerObject(){
+  let myGetObject = {
+    method: "DELETE",
+    headers: {
+      "Content-Type": "application/json",
+      "Accept": "application/json"
+    },
+  };
+  return myGetObject;
+};
 
 function displayAddPlayerErrors(errors){
   toggleDisplay("add_players_errors_panel", "inline")
