@@ -30,10 +30,9 @@ function startNewGame(){
 }
 
 function initNewGame(game){
-  getButton("new_game_button").style = "display: none";
+  toggleDisplay("new_game_button", "none");
   currentGame = new Game(game.data.id);
-  const myAddPlayer = document.getElementById("add_player_panel");
-  myAddPlayer.style = "display: inherit"
+  toggleDisplay("add_player_panel", "inherit");
 }
 
 function newPlayerRequest(configObj){

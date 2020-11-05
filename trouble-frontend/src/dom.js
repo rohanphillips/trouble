@@ -3,12 +3,17 @@ function initialLoad() {
     console.log("The DOM has loaded");
     if (currentGame === undefined){
       // const myNewGameButton = getButton("new_game_button");
-      getButton("new_game_button").addEventListener("click", () => startNewGame());
+      getElement("new_game_button").addEventListener("click", () => startNewGame());
       addSubmitPreventAddPlayer();
     }
   });
 }
 
-function getButton(id){
+function getElement(id){
   return document.getElementById(id);
+}
+
+function toggleDisplay(id, setting){
+  let element = document.getElementById(id);
+  element.style = `display: ${setting}`
 }
