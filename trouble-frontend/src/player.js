@@ -75,7 +75,12 @@ function deletePlayerRequest(id, element, configObj){
             return response.json();
           })
           .then(function(object) {
+            if (object.message === "success"){
             console.log("delete successful")
+            console.log(object.message);
+            console.log(element);
+            element.remove();
+            }
           })
           .catch(function(error) {
           });
