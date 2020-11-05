@@ -23,9 +23,6 @@ function newGameRequest(configObj){
             return response.json();
           })
           .then(function(object) {
-            // console.log("this is what was returned for newPokemonRequest")
-            // console.log(object)
-            // console.log(object.data.attributes);
             initNewGame(object);
           })
           .catch(function(error) {

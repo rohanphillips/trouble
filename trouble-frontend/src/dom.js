@@ -17,3 +17,17 @@ function toggleDisplay(id, setting){
   let element = document.getElementById(id);
   element.style = `display: ${setting}`
 }
+
+let someErrors = undefined;
+
+function displayAddPlayerErrors(errors){
+  toggleDisplay("add_players_errors_panel", "inline")
+  myList = document.getElementById("add_players_errors");
+  myList.innerHTML = '';
+  const keys = Object.keys(errors);
+  for (i=0; i < keys.length; i++){
+    myItem = document.createElement("li")
+    myItem.innerHTML = keys[i] + " " + errors[keys[i]];
+    myList.appendChild(myItem);
+  }
+}
