@@ -6,14 +6,17 @@ class Game{
   }
 }
 
+function addPlayer(){
+  console.log("add Player")
+}
+
 function startNewGame(){
   console.log("Start new Game");
   newGameRequest(createNewGameObject());
 }
 
 function initNewGame(game){
-  const myNewGameButton = getNewGameButton();
-  myNewGameButton.style = "display: none";
+  getButton("new_game_button").style = "display: none";
   currentGame = new Game(game.data.id);
   const myAddPlayer = document.getElementById("add_player_panel");
   myAddPlayer.style = "display: inherit"

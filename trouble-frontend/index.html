@@ -30,13 +30,18 @@
                   <col style="background-color: white;">
                   <tr>
                     <button id="new_game_button">New Game</button><br>
-                    <div id="add_player_panel" style="display: none;">
+                    <!-- <div id="add_player_panel" style="display: none;"> -->
+                    <div id="add_player_panel" >
+                      <p>Add Game Players</p>
                       <form>
                         <label for="player_name">Player Name:</label>
                         <input type="text" id="player_name" name="player_name"> <br>
                         <label for="player_color">Player Color:</label>
                         <input name="player_color" id="player_color" value="2CAFFE" data-jscolor="" class="jscolor jscolor-active" autocomplete="off" autocorrect="off" autocapitalize="off" spellcheck="false" style="background-image: linear-gradient(to right, rgb(44, 175, 254) 0%, rgb(44, 175, 254) 30px, rgba(0, 0, 0, 0) 31px, rgba(0, 0, 0, 0) 100%), url(&quot;data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAACAAAAAQCAYAAAB3AH1ZAAAAU0lEQVRIS2OcOXPmfwY84OzZs/ikGYyNjfHK49KfkpLCsG3btuWMow4YDYHREBjwEEhLS8NbDpCbz2GFAy79Tk5ODEuXLl3OOOqA0RAYDYGBDgEA8m6qcb3sNVEAAAAASUVORK5CYII=&quot;) !important; background-position: left top, left top !important; background-size: auto, 32px 16px !important; background-repeat: repeat-y, repeat-y !important; background-origin: padding-box, padding-box !important; padding-left: 40px !important;">
                       </form><br>
+                      <div id="add_players_errors">
+
+                      </div>
                       <button id="add_player_button">Add</button>
                       <div id="current_players">
                         <ul>
