@@ -8,7 +8,9 @@ function addSubmitPreventAddPlayer(){
 function addPlayer(){
   toggleDisplay("add_players_errors_panel", "none");
   let newPlayer = {}  
-  newPlayer.game_id = currentGame.id;
+  newPlayer.game_id = currentGame.gameid;
+  console.log("addPlayer")
+  console.log(currentGame.gameid)
   newPlayer.player_name = document.getElementById("player_name_input").value
   newPlayer.player_color = document.getElementById("player_color_input").value;
   newPlayerRequest(createNewPlayerObject(newPlayer));

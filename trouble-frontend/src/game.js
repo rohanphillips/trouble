@@ -40,8 +40,8 @@ class Piece {
   }
 }
 
-let piece = new Piece(1, 1, 1);
-let player = new Player("rohan", "red");
+// let piece = new Piece(1, 1, 1);
+// let player = new Player("rohan", "red");
 
 
 
