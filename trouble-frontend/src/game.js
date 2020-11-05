@@ -15,33 +15,9 @@ class Game{
   }
 }
 
-class Player {
-  constructor(id, name, color){
-    this.id = id;
-    this.name = name;
-    this.color = color;
-    this.pieces = [];
-  }
 
-  push(piece){
-    return this.pieces.push(piece);
-  }
-
-  get playerName(){
-    return this.name;
-  }
-}
-
-class Piece {
-  constructor(id, pieceId, boardLocation){
-    this.id = id;
-    this.pieceId = pieceId;
-    this.boardLocation = boardLocation;
-  }
-}
-
-// let piece = new Piece(1, 1, 1);
-// let player = new Player("rohan", "red");
+let piece = new Piece(1, 1, 1);
+let player = new Player("rohan", "red");
 
 
 

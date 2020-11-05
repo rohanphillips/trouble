@@ -1,3 +1,32 @@
+class Player {
+  constructor(id, name, color){
+    this.id = id;
+    this.name = name;
+    this.color = color;
+    this.pieces = [];
+  }
+
+  push(piece){
+    return this.pieces.push(piece);
+  }
+
+  get playerName(){
+    return this.name;
+  }
+
+  get pieceList(){
+    return this.pieces;
+  }
+}
+
+class Piece {
+  constructor(id, pieceId, boardLocation){
+    this.id = id;
+    this.pieceId = pieceId;
+    this.boardLocation = boardLocation;
+  }
+}
+
 function addSubmitPreventAddPlayer(){
   document.querySelector("#add_player_form").addEventListener("submit", function(event) {    
     event.preventDefault();
@@ -26,6 +55,7 @@ function newPlayerRequest(configObj){
               displayAddPlayerErrors(object.errors);
             } else {
               displayNewPlayer(object);
+              saveNewPlayer(object);
             }
           })
           .catch(function(error) {
@@ -43,6 +73,17 @@ function createNewPlayerObject(newPlayer){
   };
   return myGetObject;
 };
+
+let p = undefined;
+function saveNewPlayer(object){
+  p = object;
+  let newPlayer = new Player(object.data.id, object.data.attributes.name, object.data.attributes.color);
+  let ps = object.data.attributes.pieces;
+  for (let i=0; i < ps.length; i++){
+    newPlayer.push(new Piece(ps[i].id, ps[i].piece_number, ps[i].board_location))
+  }
+  currentGame.push(newPlayer);
+}
 
 
 function displayNewPlayer(object){
@@ -104,7 +145,7 @@ function displayAddPlayerErrors(errors){
   myList = document.getElementById("add_players_errors");
   myList.innerHTML = '';
   const keys = Object.keys(errors);
-  for (i=0; i < keys.length; i++){
+  for (let i=0; i < keys.length; i++){
     myItem = document.createElement("li")
     myItem.innerHTML = keys[i] + " " + errors[keys[i]];
     myList.appendChild(myItem);
