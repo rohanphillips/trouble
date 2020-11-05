@@ -23,12 +23,13 @@ function newPlayerRequest(configObj){
             if (object.errors){
               displayAddPlayerErrors(object.errors);
             } else {
-              console.log("new player successful")
+              displayNewPlayer(object);
             }
           })
           .catch(function(error) {
           });
 }
+
 function createNewPlayerObject(newPlayer){
   let myGetObject = {
     method: "POST",
@@ -40,3 +41,19 @@ function createNewPlayerObject(newPlayer){
   };
   return myGetObject;
 };
+
+function displayNewPlayer(object){
+  console.log(object);
+}
+
+function displayAddPlayerErrors(errors){
+  toggleDisplay("add_players_errors_panel", "inline")
+  myList = document.getElementById("add_players_errors");
+  myList.innerHTML = '';
+  const keys = Object.keys(errors);
+  for (i=0; i < keys.length; i++){
+    myItem = document.createElement("li")
+    myItem.innerHTML = keys[i] + " " + errors[keys[i]];
+    myList.appendChild(myItem);
+  }
+}
