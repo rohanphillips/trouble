@@ -41,9 +41,31 @@ function createNewPlayerObject(newPlayer){
   };
   return myGetObject;
 };
-
+let d = undefined;
 function displayNewPlayer(object){
   console.log(object);
+  d = object;
+  let playerList = document.getElementById("current_player_list");
+  let newPlayer = document.createElement("div")
+  newPlayer.id = `p${object.data.id}`
+  let name = document.createElement("div")
+  name.innerText = `${object.data.attributes.name}`
+  newPlayer.appendChild(name);
+  let holder = document.createElement("div")
+  let deleteButton = document.createElement("button")
+  deleteButton.innerText = "Delete"
+  deleteButton.id = `${object.data.id}`
+  deleteButton.addEventListener("click", () => {
+    deletePlayer(deleteButton.id);
+  })
+  holder.appendChild(deleteButton);
+  newPlayer.appendChild(holder);
+  playerList.appendChild(newPlayer);
+
+}
+
+function deletePlayer(id){
+  console.log("will delete player " + id)
 }
 
 function displayAddPlayerErrors(errors){
