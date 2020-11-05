@@ -74,7 +74,6 @@ function createNewPlayerObject(newPlayer){
   return myGetObject;
 };
 
-let p = undefined;
 function saveNewPlayer(object){
   p = object;
   let newPlayer = new Player(object.data.id, object.data.attributes.name, object.data.attributes.color);
@@ -119,10 +118,8 @@ function deletePlayerRequest(id, element, configObj){
           })
           .then(function(object) {
             if (object.message === "success"){
-            console.log("delete successful")
-            console.log(object.message);
-            console.log(element);
             element.remove();
+            currentGame.deletePlayerID(id)
             }
           })
           .catch(function(error) {
