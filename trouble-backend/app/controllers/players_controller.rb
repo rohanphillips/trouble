@@ -1,6 +1,12 @@
 class PlayersController < ApplicationController
   def create
-    byebug
+    @player = Player.new(player_params);
+    
+    if @player.save
+      render json: PlayerSerializer.new(@player);
+    else
+      render :json => {:error => "playerNotCreated", :errors => @player.errors}
+    end;
   end
 
   def edit
@@ -17,4 +23,6 @@ class PlayersController < ApplicationController
   end
 
   def player_params
+    params.require(:player).permit(:game_id).merge(name: params[:player_name], color: params[:player_color])
+  end
 end

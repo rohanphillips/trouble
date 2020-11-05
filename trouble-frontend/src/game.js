@@ -17,7 +17,7 @@ function addPlayer(){
   console.log("add Player")
   console.log(document.getElementById("player_name_input").value)
   console.log(document.getElementById("player_color_input").value)
-  let newPlayer = {}
+  let newPlayer = {}  
   newPlayer.game_id = currentGame.id;
   newPlayer.player_name = document.getElementById("player_name_input").value
   newPlayer.player_color = document.getElementById("player_color_input").value;
@@ -40,15 +40,19 @@ function initNewGame(game){
 function newPlayerRequest(configObj){
   return fetch(PLAYERS_URL, configObj)
           .then(function(response) {
+            console.log("send request");
             return response.json();
           })
           .then(function(object) {
             // console.log("this is what was returned for newPokemonRequest")
             // console.log(object)
             // console.log(object.data.attributes);
+            console.log("new player added");
+            console.log(object);
           })
           .catch(function(error) {
-            console.log(error.message);
+            // console.log("error");
+            // console.log(error.message);
           });
 }
 function createNewPlayerObject(newPlayer){
