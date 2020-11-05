@@ -38,8 +38,6 @@ function addPlayer(){
   toggleDisplay("add_players_errors_panel", "none");
   let newPlayer = {}  
   newPlayer.game_id = currentGame.gameid;
-  console.log("addPlayer")
-  console.log(currentGame.gameid)
   newPlayer.player_name = document.getElementById("player_name_input").value
   newPlayer.player_color = document.getElementById("player_color_input").value;
   newPlayerRequest(createNewPlayerObject(newPlayer));
@@ -56,6 +54,17 @@ function newPlayerRequest(configObj){
             } else {
               displayNewPlayer(object);
               saveNewPlayer(object);
+              let myInput = document.getElementById("player_name_input")
+              myInput.value = "";
+              // myInput.focus();
+              console.log("np")
+              console.log(currentGame.playerCount);
+              
+              if (currentGame.playerCount === 4){
+                toggleDisplay("add_player_panel", "none");
+              }
+              toggleDisplay("current_players_panel", "inline");
+              toggleDisplay("start_game", "inline");
             }
           })
           .catch(function(error) {
@@ -86,7 +95,6 @@ function saveNewPlayer(object){
 
 
 function displayNewPlayer(object){
-  console.log(object);
   let playerList = document.getElementById("current_player_list");
   let newPlayer = document.createElement("div")
   newPlayer.id = `p${object.data.id}`
@@ -107,7 +115,6 @@ function displayNewPlayer(object){
 }
 
 function initiateDeletePlayer(id, element){
-  console.log("will delete player " + id)
   deletePlayerRequest(id, element, createDeletePlayerObject())
 }
 
@@ -118,8 +125,11 @@ function deletePlayerRequest(id, element, configObj){
           })
           .then(function(object) {
             if (object.message === "success"){
-            element.remove();
-            currentGame.deletePlayerID(id)
+              element.remove();
+              currentGame.deletePlayerID(id)
+              if (currentGame.playerCount < 4){
+                toggleDisplay("add_player_panel", "inline");
+              }
             }
           })
           .catch(function(error) {
