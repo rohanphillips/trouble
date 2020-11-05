@@ -1,6 +1,6 @@
 class PlayersController < ApplicationController
   def create
-
+    byebug
   end
 
   def edit
@@ -15,4 +15,6 @@ class PlayersController < ApplicationController
   def destroy
 
   end
+
+  def player_params
 end

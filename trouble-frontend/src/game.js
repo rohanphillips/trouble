@@ -19,8 +19,9 @@ function addPlayer(){
   console.log(document.getElementById("player_color_input").value)
   let newPlayer = {}
   newPlayer.game_id = currentGame.id;
-  newPlayer.player_name = document.getElementById("player_name_input").valuel
+  newPlayer.player_name = document.getElementById("player_name_input").value
   newPlayer.player_color = document.getElementById("player_color_input").value;
+  // console.log(createNewPlayerObject(newPlayer))
   newPlayerRequest(createNewPlayerObject(newPlayer));
 }
 
@@ -37,7 +38,7 @@ function initNewGame(game){
 }
 
 function newPlayerRequest(configObj){
-  return fetch(GAMES_URL, configObj)
+  return fetch(PLAYERS_URL, configObj)
           .then(function(response) {
             return response.json();
           })
