@@ -7,5 +7,33 @@ header {
 }
 
 .menu_table {
-  width: 10vw;  
+  width: 100%;  
+}
+
+.row {
+  width: 100%;
+  /*margin: 0 auto;*/
+  text-align: center;
+}
+.block {
+  width: 100px;
+  /*float: left;*/
+    display: inline-block;
+    zoom: 1;
+    /* background-color: #b4263d; */
+}
+
+.square {
+  height: 150px;
+  width: 150px;
+  display: inline-block;
+  background-color: #555;
+  text-align: center;
+}
+
+.square1{
+  height: 100%;
+  width: 100%;
+  display: inline-block;
+  background-color: #555;
 }
