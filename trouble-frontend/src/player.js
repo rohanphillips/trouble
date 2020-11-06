@@ -40,6 +40,8 @@ function addPlayer(){
   newPlayer.game_id = currentGame.gameid;
   newPlayer.player_name = document.getElementById("player_name_input").value
   newPlayer.player_color = document.getElementById("player_color_input").value;
+  console.log("newPlaye before server request")
+  console.log(newPlayer);
   newPlayerRequest(createNewPlayerObject(newPlayer));
 }
 
@@ -56,8 +58,7 @@ function newPlayerRequest(configObj){
               saveNewPlayer(object);
               let myInput = document.getElementById("player_name_input")
               myInput.value = "";
-              // myInput.focus();
-              console.log("np")
+              myInput.focus();
               console.log(currentGame.playerCount);
               
               if (currentGame.playerCount === 4){
@@ -71,7 +72,8 @@ function newPlayerRequest(configObj){
           });
 }
 
-function createNewPlayerObject(newPlayer){
+function createNewPlayerObject(newPlayer){  
+  // console.log("CONSOLE", JSON.stringify(newPlayer))
   let myGetObject = {
     method: "POST",
     headers: {

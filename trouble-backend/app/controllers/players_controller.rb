@@ -1,7 +1,7 @@
 class PlayersController < ApplicationController
   def create
     @player = Player.new(player_params);
-    
+    # byebug
     if @player.save
       add_pieces(@player)
       render json: PlayerSerializer.new(@player);
