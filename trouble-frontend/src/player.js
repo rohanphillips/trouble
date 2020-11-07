@@ -62,8 +62,8 @@ function newPlayerRequest(configObj){
               if (currentGame.playerCount === 4){
                 toggleDisplay("add_player_panel", "hidden");
               }              
-              toggleDisplay("current_players_panel", "display");
-              toggleDisplay("start_game_button", "display");
+              toggleDisplay("current_players_panel", "display_inline");
+              toggleDisplay("start_game_button", "display_inline");
             }
           })
           .catch(function(error) {
@@ -98,15 +98,17 @@ function displayNewPlayer(object){
   let playerList = document.getElementById("current_player_list");
   let newPlayer = document.createElement("div")
   newPlayer.id = `p${object.data.id}`
-  newPlayer.style = "display: block;";
+  newPlayer.className = "player_row"
   let name = document.createElement("div")
   name.innerText = `${object.data.attributes.name}`
-  name.style = `display: inline; color: ${object.data.attributes.color};`;
+  name.style.color = object.data.attributes.color;
+  name.className = "display_inline"
   newPlayer.appendChild(name);
   let holder = document.createElement("div")
-  holder.style = "display: inline;";
+  holder.className = "display_inline"
   let deleteButton = document.createElement("button")
   deleteButton.innerText = "Delete"
+  deleteButton.className = "player_button_show";
   deleteButton.id = `${object.data.id}`
   deleteButton.addEventListener("click", () => {
     initiateDeletePlayer(deleteButton.id, newPlayer);
@@ -130,7 +132,7 @@ function deletePlayerRequest(id, element, configObj){
               element.remove();
               currentGame.deletePlayerID(id)
               if (currentGame.playerCount < 4){
-                toggleDisplay("add_player_panel", "display");
+                toggleDisplay("add_player_panel", "display_inline");
               }
             }
           })
@@ -150,7 +152,7 @@ function createDeletePlayerObject(){
 };
 
 function displayAddPlayerErrors(errors){
-  toggleDisplay("add_players_errors_panel", "display")
+  toggleDisplay("add_players_errors_panel", "display_inline")
   myList = document.getElementById("add_players_errors");
   myList.innerHTML = '';
   const keys = Object.keys(errors);

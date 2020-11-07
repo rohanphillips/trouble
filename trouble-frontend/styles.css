@@ -9,8 +9,21 @@ header {
   display: none;
 }
 
-.display {
+.display_inline {
   display: inline;
+}
+
+.player_row{
+  margin: 5px;
+}
+
+.player_button_show{
+  display: inline;
+  margin-left: 15px;
+}
+
+.player_button_hide{
+  display: none;
 }
 
 .menu_panel {  
