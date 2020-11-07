@@ -1,6 +1,6 @@
 class Player {
   constructor(id, name, color){
-    this.id = id;
+    this.playerID = id;
     this.name = name;
     this.color = color;
     this.pieces = [];
@@ -19,10 +19,11 @@ class Player {
   }
 }
 
-class Piece {
-  constructor(id, pieceId, boardLocation){
-    this.id = id;
-    this.pieceId = pieceId;
+class Piece extends Player{
+  constructor(id, pieceNumber, boardLocation){
+    super(name);
+    this.piece_id = id;
+    this.pieceNumber = pieceNumber;
     this.boardLocation = boardLocation;
   }
 }
@@ -40,8 +41,6 @@ function addPlayer(){
   newPlayer.game_id = currentGame.gameid;
   newPlayer.player_name = document.getElementById("player_name_input").value
   newPlayer.player_color = document.getElementById("player_color_input").value;
-  console.log("newPlaye before server request")
-  console.log(newPlayer);
   newPlayerRequest(createNewPlayerObject(newPlayer));
 }
 
@@ -59,11 +58,10 @@ function newPlayerRequest(configObj){
               let myInput = document.getElementById("player_name_input")
               myInput.value = "";
               myInput.focus();
-              console.log(currentGame.playerCount);
               
               if (currentGame.playerCount === 4){
                 toggleDisplay("add_player_panel", "none");
-              }
+              }              
               toggleDisplay("current_players_panel", "inline");
               toggleDisplay("start_game", "inline");
             }
@@ -113,7 +111,6 @@ function displayNewPlayer(object){
   holder.appendChild(deleteButton);
   newPlayer.appendChild(holder);
   playerList.appendChild(newPlayer);
-
 }
 
 function initiateDeletePlayer(id, element){

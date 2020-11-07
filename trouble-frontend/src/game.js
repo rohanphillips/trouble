@@ -16,8 +16,6 @@ class Game{
     let myPointer = 0;
     for (let i=0; i < this.players.length; i++){
       let myPlayer = this.players[i];
-      console.log(myPlayer);
-      console.log(myPlayer.id);
       if (myPlayer.id === playerID){
         myPointer = i;
         break;
