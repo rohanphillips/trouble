@@ -38,12 +38,17 @@ function startGame(){
   currentGame.inProgress = true;
   toggleDisplay("start_game_button", "hidden")
   toggleDisplay("add_player_panel", "hidden");
+  let bs = document.getElementsByClassName("player_button_show")
+  for (let i = 0; i < bs.length; i++){
+    bs[i].className = "player_button_hide"
+  }
+
 }
 
 function initNewGame(game){
   toggleDisplay("new_game_button", "hidden");
   currentGame = new Game(game.data.id);
-  toggleDisplay("add_player_panel", "display");
+  toggleDisplay("add_player_panel", "display_inline");
 }
 
 function newGameRequest(configObj){
