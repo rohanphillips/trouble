@@ -4,6 +4,8 @@ class Game{
   constructor(id){
     this.gameid = id;
     this.players = [];
+    this.inProgress = false;
+    this.complete = false;
   }
 
   push(player){
