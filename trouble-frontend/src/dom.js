@@ -4,6 +4,7 @@ function initialLoad() {
     if (currentGame === undefined){
       // const myNewGameButton = getButton("new_game_button");
       getElement("new_game_button").addEventListener("click", () => startNewGame());
+      getElement("start_game_button").addEventListener("click", () => startGame());
       addSubmitPreventAddPlayer();
     }
   });

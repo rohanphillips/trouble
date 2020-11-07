@@ -63,7 +63,7 @@ function newPlayerRequest(configObj){
                 toggleDisplay("add_player_panel", "none");
               }              
               toggleDisplay("current_players_panel", "inline");
-              toggleDisplay("start_game", "inline");
+              toggleDisplay("start_game_button", "inline");
             }
           })
           .catch(function(error) {
@@ -98,10 +98,13 @@ function displayNewPlayer(object){
   let playerList = document.getElementById("current_player_list");
   let newPlayer = document.createElement("div")
   newPlayer.id = `p${object.data.id}`
+  newPlayer.style = "display: block;";
   let name = document.createElement("div")
   name.innerText = `${object.data.attributes.name}`
+  name.style = `display: inline; color: ${object.data.attributes.color};`;
   newPlayer.appendChild(name);
   let holder = document.createElement("div")
+  holder.style = "display: inline;";
   let deleteButton = document.createElement("button")
   deleteButton.innerText = "Delete"
   deleteButton.id = `${object.data.id}`

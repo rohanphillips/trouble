@@ -34,6 +34,12 @@ function startNewGame(){
   newGameRequest(createNewGameObject());
 }
 
+function startGame(){
+  currentGame.inProgress = true;
+  toggleDisplay("start_game_button", "none")
+  toggleDisplay("add_player_panel", "none");
+}
+
 function initNewGame(game){
   toggleDisplay("new_game_button", "none");
   currentGame = new Game(game.data.id);
