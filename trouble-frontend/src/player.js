@@ -36,7 +36,7 @@ function addSubmitPreventAddPlayer(){
 }
 
 function addPlayer(){
-  toggleDisplay("add_players_errors_panel", "none");
+  toggleDisplay("add_players_errors_panel", "hidden");
   let newPlayer = {}  
   newPlayer.game_id = currentGame.gameid;
   newPlayer.player_name = document.getElementById("player_name_input").value
@@ -60,10 +60,10 @@ function newPlayerRequest(configObj){
               myInput.focus();
               
               if (currentGame.playerCount === 4){
-                toggleDisplay("add_player_panel", "none");
+                toggleDisplay("add_player_panel", "hidden");
               }              
-              toggleDisplay("current_players_panel", "inline");
-              toggleDisplay("start_game_button", "inline");
+              toggleDisplay("current_players_panel", "display");
+              toggleDisplay("start_game_button", "display");
             }
           })
           .catch(function(error) {
@@ -130,7 +130,7 @@ function deletePlayerRequest(id, element, configObj){
               element.remove();
               currentGame.deletePlayerID(id)
               if (currentGame.playerCount < 4){
-                toggleDisplay("add_player_panel", "inline");
+                toggleDisplay("add_player_panel", "display");
               }
             }
           })
@@ -150,7 +150,7 @@ function createDeletePlayerObject(){
 };
 
 function displayAddPlayerErrors(errors){
-  toggleDisplay("add_players_errors_panel", "inline")
+  toggleDisplay("add_players_errors_panel", "display")
   myList = document.getElementById("add_players_errors");
   myList.innerHTML = '';
   const keys = Object.keys(errors);

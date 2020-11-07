@@ -36,14 +36,14 @@ function startNewGame(){
 
 function startGame(){
   currentGame.inProgress = true;
-  toggleDisplay("start_game_button", "none")
-  toggleDisplay("add_player_panel", "none");
+  toggleDisplay("start_game_button", "hidden")
+  toggleDisplay("add_player_panel", "hidden");
 }
 
 function initNewGame(game){
-  toggleDisplay("new_game_button", "none");
+  toggleDisplay("new_game_button", "hidden");
   currentGame = new Game(game.data.id);
-  toggleDisplay("add_player_panel", "inherit");
+  toggleDisplay("add_player_panel", "display");
 }
 
 function newGameRequest(configObj){

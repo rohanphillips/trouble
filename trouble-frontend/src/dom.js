@@ -16,5 +16,5 @@ function getElement(id){
 
 function toggleDisplay(id, setting){
   let element = document.getElementById(id);
-  element.style = `display: ${setting}`
+  element.className = setting;
 }

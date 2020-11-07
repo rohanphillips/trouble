@@ -5,9 +5,19 @@ header {
   text-align: center;
   font-size: xx-large;
 }
+.hidden {
+  display: none;
+}
 
-.menu_table {
-  width: 100%;  
+.display {
+  display: inline;
+}
+
+.menu_panel {  
+  display: inline;
+  justify-content: space-between;
+  margin: 0 auto;
+  padding: 10px 0;
 }
 
 .row {
