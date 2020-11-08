@@ -23,7 +23,7 @@ class Player {
 
 class Piece {
   constructor(id, pieceNumber, boardLocation){
-    this.piece_id = id;
+    this.pieceID = id;
     this.pieceNumber = pieceNumber;
     this.boardLocation = boardLocation;    
   }
