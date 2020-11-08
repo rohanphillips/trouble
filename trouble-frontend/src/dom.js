@@ -1,4 +1,4 @@
-function initialLoad() {
+function initialLoad(){
   document.addEventListener("DOMContentLoaded", () => {
     console.log("The DOM has loaded");
     if (currentGame === undefined){
@@ -9,7 +9,6 @@ function initialLoad() {
     }
   });
 }
-
 function getElement(id){
   return document.getElementById(id);
 }

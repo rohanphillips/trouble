@@ -1,9 +1,9 @@
-let currentGame = undefined;
 
 class Game{
   constructor(id){
     this.gameid = id;
-    this.players = [];
+    this.board = {};
+    this.players = {};
     this.inProgress = false;
     this.complete = false;
   }

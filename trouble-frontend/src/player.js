@@ -6,6 +6,8 @@ class Player {
     this.pieces = [];
   }
 
+  
+
   push(piece){
     return this.pieces.push(piece);
   }
@@ -19,13 +21,17 @@ class Player {
   }
 }
 
-class Piece extends Player{
+class Piece {
   constructor(id, pieceNumber, boardLocation){
-    super(name);
     this.piece_id = id;
     this.pieceNumber = pieceNumber;
-    this.boardLocation = boardLocation;
+    this.boardLocation = boardLocation;    
   }
+
+  get playerColor(){
+    return this.color;
+  }
+  
 }
 
 function addSubmitPreventAddPlayer(){
@@ -87,8 +93,10 @@ function saveNewPlayer(object){
   p = object;
   let newPlayer = new Player(object.data.id, object.data.attributes.name, object.data.attributes.color);
   let ps = object.data.attributes.pieces;
+  console.log("adding pieces")
   for (let i=0; i < ps.length; i++){
     newPlayer.push(new Piece(ps[i].id, ps[i].piece_number, ps[i].board_location))
+    
   }
   currentGame.push(newPlayer);
 }
