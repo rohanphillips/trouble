@@ -8,24 +8,33 @@ class Game{
     this.complete = false;
   }
 
+  newPlayer(id, name, color){
+    console.log("COUNT", Object.keys(this.players).length);
+    let playerCount = Object.keys(this.players).length;
+    if (playerCount < 4){
+      console.log("hewPlayer")
+      this.players[playerCount] = new Player(id, name, color);
+    }    
+  }
+  
   push(player){
     return this.players.push(player);
   }
 
   deletePlayerID(playerID){
     let myPointer = 0;
-    for (let i=0; i < this.players.length; i++){
+    for (let i=0; i < Object.keys(this.players).length; i++){
       let myPlayer = this.players[i];
-      if (myPlayer.id === playerID){
+      if (myPlayer.playerID === playerID){
         myPointer = i;
+        delete this.players[i]
         break;
       }
     }
-    this.players.splice(myPointer, 1);
   }
 
   get playerCount(){
-    return this.players.length;
+    return Object.keys(this.players).length;
   }
 }
 
