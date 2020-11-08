@@ -11,11 +11,7 @@ class Player {
   push(piece){
     return this.pieces.push(piece);
   }
-
-  get playerName(){
-    return this.name;
-  }
-
+  
   get pieceList(){
     return this.pieces;
   }
