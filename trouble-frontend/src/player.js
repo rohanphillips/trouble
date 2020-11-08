@@ -3,15 +3,9 @@ class Player {
     this.playerID = id;
     this.name = name;
     this.color = color;
-    this.pieces = [];
-  }
+    this.pieces = {};
+  } 
 
-  
-
-  push(piece){
-    return this.pieces.push(piece);
-  }
-  
   get pieceList(){
     return this.pieces;
   }
@@ -23,11 +17,6 @@ class Piece {
     this.pieceNumber = pieceNumber;
     this.boardLocation = boardLocation;    
   }
-
-  get playerColor(){
-    return this.color;
-  }
-  
 }
 
 function addSubmitPreventAddPlayer(){
@@ -89,12 +78,6 @@ function saveNewPlayer(object){
   p = object;
   let newPlayer = new Player(object.data.id, object.data.attributes.name, object.data.attributes.color);
   let ps = object.data.attributes.pieces;
-  console.log("adding pieces")
-  for (let i=0; i < ps.length; i++){
-    newPlayer.push(new Piece(ps[i].id, ps[i].piece_number, ps[i].board_location))
-    
-  }
-  currentGame.push(newPlayer);
 }
 
 

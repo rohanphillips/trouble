@@ -12,8 +12,12 @@ class Game{
     console.log("COUNT", Object.keys(this.players).length);
     let playerCount = Object.keys(this.players).length;
     if (playerCount < 4){
-      console.log("hewPlayer")
-      this.players[playerCount] = new Player(id, name, color);
+      let np = new Player(id, name, color);
+      // let ps = pieces.data.attributes.pieces;
+      // for (let i=0; i < ps.length; i++){
+      //   np.pieces[i] = new Piece(ps[i].id, ps[i].piece_number, ps[i].board_location)        
+      // }
+      this.players[playerCount] = np;
     }    
   }
   
