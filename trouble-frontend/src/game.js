@@ -16,7 +16,7 @@ class Game{
       for (let i=0; i < ps.length; i++){
         np.pieces[i] = new Piece(ps[i].id, ps[i].piece_number, ps[i].board_location)        
       }
-      this.players[playerCount] = np;
+      this.players[this.playerCount] = np;
     }    
   }
 
@@ -37,17 +37,54 @@ class Game{
   }
 
   createBoard(){
-
+    let playerColor;
+    let positionNumber = 0;
+    let playerPieces;
+    for (let i=0; i < 4; i++){
+      console.log("TestPlayer", this.players[i])
+      playerPieces = undefined;
+      if (this.players[i] != undefined){
+        const player = this.players[i];
+        playerColor = player.color;
+        playerPieces = player.pieces;
+      } else {
+        playerColor = randomColor();
+      }
+      //create home positions
+      for (let z=0; z < 4; z++){
+        const positionName = "p" + i + "start" + z;
+        this.board[positionName] = new Position("start", z, playerColor);
+        if (playerPieces != undefined){
+          this.board[positionName].piece = playerPieces[z];
+        }
+      }
+      //create board positions
+      for (let y=0; y < 8; y++){
+        this.board["game" + positionNumber] = new Position("game", positionNumber, playerColor);
+        positionNumber += 1;
+      }
+    }
   }
 }
 
 class Position{
-  constructor(id, color, occupied){
+  constructor(area, id, color){
+    this.area = area;
     this.id = id;
     this.color = color;
-    this.occupied = occupied;
-    this.piece = [];
+    this.piece = undefined;
   }
+
+  set updatePiece(piece){
+    this.piece = piece;
+  }
+  get isOccupied(){
+    return this.piece != undefined;
+  }
+}
+
+let randomColor = () => {
+  return "#" + Math.floor(Math.random()*16777215).toString(16);
 }
 
 function startNewGame(){
