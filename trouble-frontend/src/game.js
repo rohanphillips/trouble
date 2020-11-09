@@ -9,9 +9,8 @@ class Game{
   }
 
   newPlayer(player){
-    console.log("COUNT", Object.keys(this.players).length);
-    let playerCount = Object.keys(this.players).length;
-    if (playerCount < 4){
+    console.log("COUNT", this.playerCount);
+    if (this.playerCount < 4){
       let np = new Player(player.data.id, player.data.attributes.name, player.data.attributes.color);
       let ps = player.data.attributes.pieces;
       for (let i=0; i < ps.length; i++){
@@ -38,7 +37,7 @@ class Game{
   }
 
   createBoard(){
-    
+
   }
 }
 
