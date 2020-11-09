@@ -33,7 +33,7 @@ ActiveRecord::Schema.define(version: 2020_11_04_200340) do
   create_table "pieces", force: :cascade do |t|
     t.integer "player_id"
     t.integer "piece_number"
-    t.string "board_location"
+    t.string "board_location", default: ""
   end
 
   create_table "players", force: :cascade do |t|
