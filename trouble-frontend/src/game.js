@@ -60,6 +60,7 @@ function startGame(){
 
 function initNewGame(game){
   toggleDisplay("new_game_button", "hidden");
+  console.log("JSON Game Object", game);
   currentGame = new Game(game.data.id);
   toggleDisplay("add_player_panel", "display_inline");
 }
