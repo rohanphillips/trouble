@@ -50,18 +50,22 @@ class Game{
       } else {
         playerColor = randomColor();
       }
-      //create home positions
+      //create start/home positions
       for (let z=0; z < 4; z++){
-        const positionName = "p" + i + "start" + z;
-        this.board[positionName] = new Position("start", z, playerColor);
+        const startPositionName = "p" + i + "start" + z;
+        const homePositionName = "p" + i + "home" + z;
+        this.board[startPositionName] = new Position("start", z, playerColor);
         if (playerPieces != undefined){
-          this.board[positionName].piece = playerPieces[z];
+          this.board[startPositionName].piece = playerPieces[z];
         }
+        this.board[homePositionName] = new Position("home", z, playerColor);
       }
       //create board positions
       for (let y=0; y < 8; y++){
-        this.board["game" + positionNumber] = new Position("game", positionNumber, playerColor);
-        positionNumber += 1;
+        const gamePositionName = "game" + positionNumber;
+        this.board[gamePositionName] = new Position("game", positionNumber, playerColor);
+        myBoard(positionNumber, gamePositionName, playerColor);
+        positionNumber += 1;        
       }
     }
   }
@@ -83,6 +87,25 @@ class Position{
   }
 }
 
+function myBoard(position, id, color, xExtend, yExtend){
+  const positions = 32;
+  const startingAngle = 45;
+  let height = 240 + xExtend;
+  let width = 320 + yExtend;
+
+  let angleIncrement = (Math.PI * 2) / positions;
+  let x = width + (width * Math.cos(position * angleIncrement)) - 15;
+  let y = height + (height * Math.sin(position * angleIncrement)) - 15;
+  console.log("myBoard x", x)
+  console.log("myBoard y", y)
+  let board = document.getElementById("board")
+  let r = document.createElement("span");
+  r.id = id;
+  r.className = "elipsoid";
+  r.style = `top: ${y}px; left: ${x}px; background-color: ${color};`
+  board.appendChild(r);
+}
+
 let randomColor = () => {
   return "#" + Math.floor(Math.random()*16777215).toString(16);
 }
@@ -101,7 +124,8 @@ function startGame(){
     bs[i].className = "player_button_hide"
   }
   //initalize the game
-
+  currentGame.createBoard();
+  
 }
 
 function initNewGame(game){

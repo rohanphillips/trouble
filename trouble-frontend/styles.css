@@ -46,17 +46,20 @@ header {
     /* background-color: #b4263d; */
 }
 
-.square {
-  height: 150px;
-  width: 150px;
-  display: inline-block;
-  background-color: #555;
-  text-align: center;
+.elipsoid {  
+  position:absolute;
+  /* background:url('http://placehold.it/100/00f/fff/&text=>°))><'); */
+  /* background-color: ; */
+  /* top: 367px;
+  left: 534px; */
+  width: 30px;
+  height: 30px;
+  border-radius:50%;
 }
 
-.square1{
-  height: 100%;
-  width: 100%;
-  display: inline-block;
-  background-color: #555;
+.viewport {
+  position:relative;
+  width:640px;
+  height:480px;
+  border:1px dashed #000;
 }
