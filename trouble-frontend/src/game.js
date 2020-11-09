@@ -41,6 +41,15 @@ class Game{
   }
 }
 
+class Position{
+  constructor(id, color, occupied){
+    this.id = id;
+    this.color = color;
+    this.occupied = occupied;
+    this.piece = [];
+  }
+}
+
 function startNewGame(){
   console.log("Start new Game");
   newGameRequest(createNewGameObject());
