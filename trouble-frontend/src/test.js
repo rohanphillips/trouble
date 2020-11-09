@@ -1,3 +1,41 @@
+let testPlayer = {
+  "data": {
+    "id": "15",
+    "type": "player",
+    "attributes": {
+      "name": "adf",
+      "color": "#2CAFFE",
+      "pieces": [
+        {
+          "id": 57,
+          "player_id": 15,
+          "piece_number": 1,
+          "board_location": 1
+        },
+        {
+          "id": 58,
+          "player_id": 15,
+          "piece_number": 2,
+          "board_location": 2
+        },
+        {
+          "id": 59,
+          "player_id": 15,
+          "piece_number": 3,
+          "board_location": 3
+        },
+        {
+          "id": 60,
+          "player_id": 15,
+          "piece_number": 4,
+          "board_location": 4
+        }
+      ]
+    }
+  }
+}
+
+
 class Chess  {
   constructor() {
     this.board = {}

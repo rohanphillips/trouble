@@ -75,7 +75,7 @@ function createNewPlayerObject(newPlayer){
 };
 
 function saveNewPlayer(object){
-  p = object;
+  console.log("saveNewPlayer", object)
   let newPlayer = new Player(object.data.id, object.data.attributes.name, object.data.attributes.color);
   let ps = object.data.attributes.pieces;
 }

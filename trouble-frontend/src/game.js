@@ -8,21 +8,17 @@ class Game{
     this.complete = false;
   }
 
-  newPlayer(id, name, color){
+  newPlayer(player){
     console.log("COUNT", Object.keys(this.players).length);
     let playerCount = Object.keys(this.players).length;
     if (playerCount < 4){
-      let np = new Player(id, name, color);
-      // let ps = pieces.data.attributes.pieces;
-      // for (let i=0; i < ps.length; i++){
-      //   np.pieces[i] = new Piece(ps[i].id, ps[i].piece_number, ps[i].board_location)        
-      // }
+      let np = new Player(player.data.id, player.data.attributes.name, player.data.attributes.color);
+      let ps = player.data.attributes.pieces;
+      for (let i=0; i < ps.length; i++){
+        np.pieces[i] = new Piece(ps[i].id, ps[i].piece_number, ps[i].board_location)        
+      }
       this.players[playerCount] = np;
     }    
-  }
-  
-  push(player){
-    return this.players.push(player);
   }
 
   deletePlayerID(playerID){
