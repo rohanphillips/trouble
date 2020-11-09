@@ -36,6 +36,10 @@ class Game{
   get playerCount(){
     return Object.keys(this.players).length;
   }
+
+  createBoard(){
+    
+  }
 }
 
 function startNewGame(){
@@ -51,6 +55,7 @@ function startGame(){
   for (let i = 0; i < bs.length; i++){
     bs[i].className = "player_button_hide"
   }
+  //initalize the game
 
 }
 

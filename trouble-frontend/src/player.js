@@ -120,6 +120,9 @@ function deletePlayerRequest(id, element, configObj){
               if (currentGame.playerCount < 4){
                 toggleDisplay("add_player_panel", "display_inline");
               }
+              if (currentGame.playerCount === 0){
+                toggleDisplay("start_game_button", "hidden");
+              }
             }
           })
           .catch(function(error) {
