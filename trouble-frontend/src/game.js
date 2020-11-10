@@ -8,17 +8,31 @@ class Game{
     this.complete = false;
     this.width = 900;
     this.height = 700;
+    this.currentPlayer = 0;
+  }
+
+  nextPlayer(diceRoll){
+    if (diceRoll != 6){
+      console.log("PLAYER COUNT", this.playerCount())
+      if (this.currentPlayer === this.playerCount() - 1){
+        this.currentPlayer = 0;
+      } else {
+        this.currentPlayer += 1;
+      }
+    }
+    console.log("CURRENT PLAYER", this.currentPlayer)
   }
 
   newPlayer(player){
-    console.log("COUNT", this.playerCount);
-    if (this.playerCount < 4){
+    console.log("COUNT", this.playerCount());
+    if (this.playerCount() < 4){
+      console.log("adding Player")
       let np = new Player(player.data.id, player.data.attributes.name, player.data.attributes.color);
       let ps = player.data.attributes.pieces;
       for (let i=0; i < ps.length; i++){
         np.pieces[i] = new Piece(ps[i].id, ps[i].piece_number, ps[i].board_location)        
       }
-      this.players[this.playerCount] = np;
+      this.players[this.playerCount()] = np;
     }    
   }
 
@@ -34,7 +48,7 @@ class Game{
     }
   }
 
-  get playerCount(){
+  playerCount(){
     return Object.keys(this.players).length;
   }
 
