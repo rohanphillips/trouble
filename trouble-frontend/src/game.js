@@ -11,6 +11,20 @@ class Game{
     this.currentPlayer = 0;
   }
 
+  movePiece(player, increment){
+    let myPlayer = this.players[player];
+    let playerPieces = myPlayer.pieces;
+    let selectedPiece = playerPieces[3];
+    console.log("PIECE", selectedPiece)
+    if (increment === 6 && selectedPiece.boardLocation.includes("start")){
+      console.log("will move to start");
+      let startLocation = player * 8;
+      let boardPosition = this.board[startLocation];
+      //will need to check of position is open in the future
+      boardPosition.piece = selectedPiece;
+    }
+  }
+
   nextPlayer(diceRoll){
     if (diceRoll != 6){
       if (this.currentPlayer === this.playerCount() - 1){
