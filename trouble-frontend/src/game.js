@@ -241,6 +241,7 @@ function startGame(){
     bs[i].className = "player_button_hide"
   }
   //initalize the game
+  toggleDisplay("game_panel", "display_inline");
   currentGame.createBoard();
   
 }

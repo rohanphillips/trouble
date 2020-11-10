@@ -117,10 +117,10 @@ function deletePlayerRequest(id, element, configObj){
             if (object.message === "success"){
               element.remove();
               currentGame.deletePlayerID(id)
-              if (currentGame.playerCount < 4){
+              if (currentGame.playerCount() < 4){
                 toggleDisplay("add_player_panel", "display_inline");
               }
-              if (currentGame.playerCount === 0){
+              if (currentGame.playerCount() === 0){
                 toggleDisplay("start_game_button", "hidden");
               }
             }
