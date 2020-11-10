@@ -15,20 +15,38 @@ class Game{
     let myPlayer = this.players[player];
     let playerPieces = myPlayer.pieces;
     let pieceStartLocation = 3;
+    let boardPosition = "";
+    let newPosition = 0;
+    let newLocation = "";
     //logic will have to be added here to decide which piece to move from start.
     let selectedPiece = playerPieces[pieceStartLocation];
     console.log("PIECE", selectedPiece)
     if (diceNumber === 6 && selectedPiece.boardLocation.includes("start")){
       console.log("will move to start");
       let startLocation = player * 8;
-      let newLocation = `game${startLocation}`;
-      let boardPosition = this.board[newLocation];
+      newLocation = `game${startLocation}`;
+      boardPosition = this.board[newLocation];
       //will need to check of position is open in the future
       boardPosition.piece = selectedPiece;
       this.updatePositionElement(newLocation, "elipsoid_position", myPlayer.color);
       this.updatePositionElement(selectedPiece.boardLocation, "elipsoid_board")
       selectedPiece.boardLocation = newLocation;
       //update new location to represent the new piece
+    } else if (selectedPiece.boardLocation.includes("game")){
+      console.log("piece on game")
+      boardPosition = this.board[selectedPiece.boardLocation]
+      newPosition = boardPosition.id + diceNumber;
+      //check if new position is occupied
+      //update board position
+      
+      this.updatePositionElement(`game${boardPosition.id}`, "elipsoid_board")
+      newLocation = `game${newPosition}`;
+      selectedPiece.boardLocation = newLocation;
+      this.updatePositionElement(newLocation, "elipsoid_position", myPlayer.color)
+
+      //update board appearance
+      //record piece new location
+      console.log(boardPosition)
     }
     this.nextPlayer(diceNumber);
   }
