@@ -1,8 +1,12 @@
 function rollDice() {
   const dice = [...document.querySelectorAll(".die-list")];
+  let roll = 0;
   dice.forEach(die => {
     toggleClasses(die);
-    die.dataset.roll = getRandomNumber(1, 6);
+    roll = getRandomNumber(1, 6);
+    die.dataset.roll = roll;
+    setTimeout(() => {  currentGame.movePiece(roll); }, 1700);
+    
   });
 }
 
