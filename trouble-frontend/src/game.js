@@ -11,23 +11,36 @@ class Game{
     this.currentPlayer = 0;
   }
 
-  movePiece(player, increment){
+  movePiece(player, diceNumber){
     let myPlayer = this.players[player];
     let playerPieces = myPlayer.pieces;
-    let selectedPiece = playerPieces[3];
+    let pieceStartLocation = 3;
+    //logic will have to be added here to decide which piece to move from start.
+    let selectedPiece = playerPieces[pieceStartLocation];
     console.log("PIECE", selectedPiece)
-    if (increment === 6 && selectedPiece.boardLocation.includes("start")){
+    if (diceNumber === 6 && selectedPiece.boardLocation.includes("start")){
       console.log("will move to start");
       let startLocation = player * 8;
       let newLocation = `game${startLocation}`;
       let boardPosition = this.board[newLocation];
       //will need to check of position is open in the future
       boardPosition.piece = selectedPiece;
+      this.updatePositionElement(newLocation, "elipsoid_position", myPlayer.color);
+      this.updatePositionElement(selectedPiece.boardLocation, "elipsoid_board")
       selectedPiece.boardLocation = newLocation;
-      //change piece start location css
       //update new location to represent the new piece
     }
-    this.newPlayer(increment);
+    this.nextPlayer(diceNumber);
+  }
+
+  updatePositionElement(location, newCSS, color){
+    let element = document.getElementById(location);
+    element.className = newCSS;
+    if (color != undefined){
+      element.style.backgroundColor = color;
+    } else {
+      element.style.backgroundColor = "#ffffff"
+    }
   }
 
   nextPlayer(diceRoll){
