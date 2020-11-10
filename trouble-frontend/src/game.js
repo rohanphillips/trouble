@@ -97,6 +97,7 @@ class Game{
     let halfHeight;
     let top;
     let left;
+    let myClass;
     const boardReducer = 100;
     const homeReducer = 150;
     
@@ -108,6 +109,7 @@ class Game{
         halfHeight = height / 2;
         top = 0;
         left = 0;
+        myClass = "elipsoid_position";
         break;
       case "board_layer":   
         width = width - boardReducer;
@@ -116,6 +118,8 @@ class Game{
         halfHeight = height / 2;
         top = boardReducer / 2;
         left = boardReducer / 2;
+        color = "#ffffff";
+        myClass = "elipsoid_board";
         break;
       case "home_layer":  
         width = width - boardReducer - homeReducer;
@@ -124,6 +128,7 @@ class Game{
         halfHeight = height / 2;
         top = homeReducer / 2;
         left = homeReducer / 2;
+        myClass = "elipsoid_home";
         break;
     }
     const modifyLayer = document.getElementById(layer);
@@ -136,7 +141,7 @@ class Game{
     // console.log("myBoard y", y)
     let r = document.createElement("span");
     r.id = id;
-    r.className = "elipsoid";
+    r.className = myClass;
     r.style = `top: ${y}px; left: ${x}px; background-color: ${color};`
     modifyLayer.appendChild(r);
   }
