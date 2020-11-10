@@ -148,6 +148,7 @@ class Game{
       }
     }
   }
+  
   createLayer(layer, position, id, color){
     const positions = 32;
     let height;
