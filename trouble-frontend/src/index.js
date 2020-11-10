@@ -5,8 +5,8 @@ let currentGame = undefined;
 
 initialLoad();
 
-// currentGame = new Game(1);
-// currentGame.newPlayer(testPlayer);
-// currentGame.createBoard();
+currentGame = new Game(1);
+currentGame.newPlayer(testPlayer);
+currentGame.createBoard();
 
 

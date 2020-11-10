@@ -97,8 +97,8 @@ class Game{
     let halfHeight;
     let top;
     let left;
-    const boardReducer = 75;
-    const homeReducer = 75;
+    const boardReducer = 100;
+    const homeReducer = 150;
     
     width = this.width;
     height = this.height;
