@@ -11,8 +11,8 @@ class Game{
     this.currentPlayer = 0;
   }
 
-  movePiece(player, diceNumber){
-    let myPlayer = this.players[player];
+  movePiece(diceNumber){
+    let myPlayer = this.players[this.currentPlayer];
     let playerPieces = myPlayer.pieces;
     let pieceStartLocation = 3;
     let boardPosition = "";
@@ -23,7 +23,7 @@ class Game{
     console.log("PIECE", selectedPiece)
     if (diceNumber === 6 && selectedPiece.boardLocation.includes("start")){
       console.log("will move to start");
-      let startLocation = player * 8;
+      let startLocation = this.currentPlayer * 8;
       newLocation = `game${startLocation}`;
       boardPosition = this.board[newLocation];
       //will need to check of position is open in the future
