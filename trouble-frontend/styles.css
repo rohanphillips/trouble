@@ -57,9 +57,26 @@ header {
   border-radius:50%;
 }
 
-.viewport {
+.start_layer {
   position:relative;
-  width:640px;
-  height:480px;
-  border:1px dashed #000;
+  border:1px dashed rgb(145, 19, 19);
+}
+.board_layer {
+  position: absolute;
+  border:1px dashed rgb(67, 22, 190);
+}
+.home_layer {
+  position: relative;
+  border:1px dashed rgb(10, 133, 47);
+}
+.popper_layer {
+  position: relative;
+  width: 200px;
+  height: 200px;
+  margin-top: 25%;
+  margin-left: auto;
+  margin-right: auto;
+  text-align: center;
+  font-size: 60px;
+  border:1px dashed rgb(10, 133, 47);
 }

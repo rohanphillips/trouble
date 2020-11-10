@@ -6,7 +6,7 @@ let currentGame = undefined;
 initialLoad();
 
 // currentGame = new Game(1);
-// console.log("here")
-// currentGame.newPlayer(1, "rp", "red")
+// currentGame.newPlayer(testPlayer);
+// currentGame.createBoard();
 
 

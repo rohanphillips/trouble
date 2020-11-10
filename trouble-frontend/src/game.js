@@ -6,6 +6,8 @@ class Game{
     this.players = {};
     this.inProgress = false;
     this.complete = false;
+    this.width = 900;
+    this.height = 700;
   }
 
   newPlayer(player){
@@ -39,6 +41,9 @@ class Game{
   createBoard(){
     let playerColor;
     let positionNumber = 0;
+    let startCount = 0;
+    let homeCount = 0;
+    let playerLocation = 0;
     let playerPieces;
     for (let i=0; i < 4; i++){
       console.log("TestPlayer", this.players[i])
@@ -61,13 +66,79 @@ class Game{
         this.board[homePositionName] = new Position("home", z, playerColor);
       }
       //create board positions
+      startCount = 0;
+      homeCount = 0;
+      playerLocation = 0;
       for (let y=0; y < 8; y++){
-        const gamePositionName = "game" + positionNumber;
-        this.board[gamePositionName] = new Position("game", positionNumber, playerColor);
-        myBoard(positionNumber, gamePositionName, playerColor);
+        const gamePositionName = "game" + positionNumber;      
+        this.board[gamePositionName] = new Position("game", positionNumber, playerColor);        
+        
+        
+        this.createLayer("board_layer", positionNumber , gamePositionName, playerColor);
+        
+        if (playerLocation >= 2 && playerLocation <= 5){
+          this.createLayer("start_layer", positionNumber, "p" + i + "start" + startCount, playerColor);
+          startCount += 1;
+        }
+        if (playerLocation >= 0 && playerLocation <= 3){
+          this.createLayer("home_layer", positionNumber , "p" + i + "home" + homeCount, playerColor, homeCount);
+          homeCount += 1;
+        }
+        playerLocation += 1;
         positionNumber += 1;        
       }
     }
+  }
+  createLayer(layer, position, id, color){
+    const positions = 32;
+    let height;
+    let width;
+    let halfWidth;
+    let halfHeight;
+    let top;
+    let left;
+    const boardReducer = 75;
+    const homeReducer = 75;
+    
+    width = this.width;
+    height = this.height;
+    switch (layer){
+      case "start_layer":        
+        halfWidth = width / 2;
+        halfHeight = height / 2;
+        top = 0;
+        left = 0;
+        break;
+      case "board_layer":   
+        width = width - boardReducer;
+        height = height - boardReducer;
+        halfWidth = width / 2;
+        halfHeight = height / 2;
+        top = boardReducer / 2;
+        left = boardReducer / 2;
+        break;
+      case "home_layer":  
+        width = width - boardReducer - homeReducer;
+        height = height - boardReducer - homeReducer;
+        halfWidth = width / 2;
+        halfHeight = height / 2;
+        top = homeReducer / 2;
+        left = homeReducer / 2;
+        break;
+    }
+    const modifyLayer = document.getElementById(layer);
+    modifyLayer.style = `width: ${width}px; height: ${height}px; top: ${top}px; left: ${left}px;`; 
+    
+    let angleIncrement = (Math.PI * 2) / positions;
+    let x = halfWidth + (halfWidth * Math.cos(position * angleIncrement)) - 15 ;
+    let y = halfHeight + (halfHeight * Math.sin(position * angleIncrement)) - 15;
+    // console.log("myBoard x", x)
+    // console.log("myBoard y", y)
+    let r = document.createElement("span");
+    r.id = id;
+    r.className = "elipsoid";
+    r.style = `top: ${y}px; left: ${x}px; background-color: ${color};`
+    modifyLayer.appendChild(r);
   }
 }
 
@@ -85,25 +156,6 @@ class Position{
   get isOccupied(){
     return this.piece != undefined;
   }
-}
-
-function myBoard(position, id, color, xExtend, yExtend){
-  const positions = 32;
-  const startingAngle = 45;
-  let height = 240 + xExtend;
-  let width = 320 + yExtend;
-
-  let angleIncrement = (Math.PI * 2) / positions;
-  let x = width + (width * Math.cos(position * angleIncrement)) - 15;
-  let y = height + (height * Math.sin(position * angleIncrement)) - 15;
-  console.log("myBoard x", x)
-  console.log("myBoard y", y)
-  let board = document.getElementById("board")
-  let r = document.createElement("span");
-  r.id = id;
-  r.className = "elipsoid";
-  r.style = `top: ${y}px; left: ${x}px; background-color: ${color};`
-  board.appendChild(r);
 }
 
 let randomColor = () => {
