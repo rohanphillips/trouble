@@ -74,6 +74,40 @@ function createNewPlayerObject(newPlayer){
   return myGetObject;
 };
 
+function populateAllPlayers(object){
+  console.log("populate")
+  let list = document.getElementById("all_players_list")
+  object.data.map(element => {
+    let listItem = document.createElement("li")
+    listItem.innerHTML = `PlayerID: ${element.id} Name: ${element.attributes.name}`  
+    list.appendChild(listItem)
+  })
+}
+
+function allPlayerRequest(configObj){
+  return fetch(PLAYERS_URL, configObj)
+          .then(function(response) {
+            return response.json();
+          })
+          .then(function(object) {
+            console.log("PLAYERS:", object)
+            populateAllPlayers(object);
+          })
+          .catch(function(error) {
+          });
+}
+
+function createGetAllPlayersObject(){  
+  let myGetObject = {
+    method: "GET",
+    headers: {
+      "Content-Type": "application/json",
+      "Accept": "application/json"
+    },
+  };
+  return myGetObject;
+};
+
 function saveNewPlayer(object){
   console.log("saveNewPlayer", object)
   currentGame.newPlayer(object);
