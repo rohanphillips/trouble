@@ -1,5 +1,10 @@
 # Trouble
 
+![GitHub repo size](https://img.shields.io/github/repo-size/rohanphillips/trouble-project)
+![GitHub contributors](https://img.shields.io/github/contributors/rohanphillips/trouble-project)
+![GitHub stars](https://img.shields.io/github/stars/rohanphillips/trouble-project?style=social)
+![GitHub forks](https://img.shields.io/github/forks/rohanphillips/trouble-project?style=social)
+
 ## Description
 
 The Game Trouble.  If you love this game, here is my attempt to replicate the classic board game on the screen using a Rails API / Javascript implementation.  It's a work in progress.  Here it is in its current form.
